@@ -20,4 +20,11 @@ crawler (native python requests / HN api)
 db (postgresql)
 index + search (solr/typesense)
 
-Main challange is to determine blog position by link to the site.
+### Crawler:
+1. Crawler service that crawles new data (i.e blogs), every X seconds, pretty much the same as shows in this requests code.
+2. Spider (scrapy) that indexes new data (i.e pages) on indexed links (i.e blogs) every X seconds
+
+### Index:
+1. solr/typesense index, holds docs (i.e pages) that has been optimized with keywords analasis and weights.
+2. recieves the search query, passes it through the pipelines of analasis (dropping block-words, keyword extraction) and compares against index
+ 
